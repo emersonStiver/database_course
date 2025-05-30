@@ -1,0 +1,29 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: unisalle-app-backend
+
+  data:
+    mongodb:
+      uri: mongodb://root:password@mongo:27017/unisalle-app-backend?authSource=admin
+      database: unisalle-app-backend
+
+logging:
+  level:
+    org.springframework.security: TRACE        # Logs Spring Security internal operations
+    org.springframework.web: TRACE             # Logs incoming web requests
+
+
+
+myapp:
+  security:
+    jwt:
+      secretKey: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970 # I know I shouldn't do in production xD
+      accessTokenExpirationTime: 86400000 #a day
+      refreshTokenExpirationTime: 86400000 #7 days
+      allowedRoutes:
+        - /api/v1/users/signup
+        - /login
+
