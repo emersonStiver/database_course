@@ -1,0 +1,27 @@
+{
+  "properties": [
+
+    {
+      "name":"secret-key",
+      "type": "java.lang.String",
+      "description": "Secret key for JWT token"
+    },
+    {
+      "name":"accessTokenExpirationTime",
+      "type": "java.lang.String",
+      "description": "Token expiration time in seconds"
+    },
+
+    {
+      "name":"refreshTokenExpirationTime",
+      "type": "java.lang.String",
+      "description": "Refresh token expiration time in seconds"
+    },
+    {
+      "name": "allowedRoutes",
+      "type": "java.util.List",
+      "description": "List of allowed routes for authentication"
+    }
+
+  ]
+}

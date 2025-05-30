@@ -1,0 +1,37 @@
+<div class="min-h-screen bg-gray-100 p-6 flex justify-center items-start">
+  <div class="w-full max-w-3xl bg-white shadow-md rounded-xl p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-semibold">User Profile</h2>
+      <button 
+        (click)="logout()" 
+        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+      >
+        Logout
+      </button>
+    </div>
+
+    <button 
+      (click)="fetchUserDetails()"
+      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+    >
+      Load My Data
+    </button>
+
+    <table class="mt-6 w-full text-left border border-gray-300 rounded-lg" *ngIf="userData">
+      <tr class="bg-gray-200 text-gray-700">
+        <th class="p-3">Field</th>
+        <th class="p-3">Value</th>
+      </tr>
+      <tr>
+        <td class="p-3 font-medium">Email</td>
+        <td class="p-3">{{ userData.email }}</td>
+      </tr>
+      <tr>
+        <td class="p-3 font-medium">Name</td>
+        <td class="p-3">{{ userData.name }}</td>
+      </tr>
+    </table>
+
+    <p *ngIf="error" class="text-red-500 mt-4">{{ error }}</p>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+version: '3.1'
+networks:
+  spring-login-network:
+    driver: bridge
+services:
+  mongo:
+    image: mongo
+    networks:
+      - spring-login-network
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+  springApp:
+    image: spring_app
+    container_name: springApp
+    networks:
+      - spring-login-network
+    restart: always
+    ports:
+      - "8081"
+    depends_on:
+      - mongo
+
+  angularNginxApp:
+    image: angular_nginx_app
+    container_name: angularNginxApp
+    networks:
+      - spring-login-network
+    restart: always
+    ports:
+      - "8082:80"
+    depends_on:
+      - springApp
